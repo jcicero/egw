@@ -12,7 +12,12 @@ class Church extends Model
 
     protected $dates = ['deleted_at'];
 
-    public $sortable = ['igreja'];
+    public $sortable = ['id','igreja'];
 
     protected $fillable = ['igreja'];
+
+    public function member()
+    {
+        return $this->hasMany('App\Model\Member');
+    }
 }

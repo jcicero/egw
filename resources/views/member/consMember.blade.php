@@ -15,32 +15,42 @@
         </div>
     @endif
 
-    {{--@shield('church.cadastrar')--}}
-    <a href="{{ route('church.create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Cadastrar</a>
+    {{--@shield('member.cadastrar')--}}
+    <a href="{{ route('member.create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Cadastrar</a>
     {{--@endshield--}}
     <br><br>
     <table class="table table-striped">
         <tr>
             <th width="50px">@sortablelink('id','#')</th>
-            <th>@sortablelink('igreja','Igreja')</th>
+            <th>@sortablelink('nome','Nome')</th>
+            <th>@sortablelink('email','E-mail')</th>
+            <th>@sortablelink('telefone','Telefone')</th>
+            <th>@sortablelink('obs','Obs')</th>
+            <th>@sortablelink('church_id','Igreja')</th>
+            <th>@sortablelink('status_id','Status')</th>
             <th width="100px">Ações</th>
         </tr>
-        @foreach ($churches as $church)
+        @foreach ($members as $member)
             <tr>
-                <td>{{ $church->id }}</td>
-                <td>{{ $church->igreja }}</td>
+                <td>{{ $member->id }}</td>
+                <td>{{ $member->nome }}</td>
+                <td>{{ $member->email }}</td>
+                <td>{{ $member->telefone }}</td>
+                <td>{{ $member->obs }}</td>
+                <td>{{ $member->church->igreja }}</td>
+                <td>{{ $member->status->descricao }}</td>
                 <td>
-                    {{--@shield('church.editar')--}}
-                    <a class = "btn btn-sm btn-default" href="{{ route('church.edit',$church->id)}}">
+                    {{--@shield('member.editar')--}}
+                    <a class = "btn btn-sm btn-default" href="{{ route('member.edit',$member->id)}}">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </a>
                     {{--@endshield--}}
-                    <button type="button" title="EXCLUIR" class="btn btn-sm btn-default" data-toggle="modal" data-target="#excluir{{ $church->id }}">
+                    <button type="button" title="EXCLUIR" class="btn btn-sm btn-default" data-toggle="modal" data-target="#excluir{{ $member->id }}">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
 
                     <!-- Modal EXCLUIR-->
-                    <div class="modal fade" id="excluir{{$church->id}}" tabindex="-1" role="dialog" aria-labelledby="excluir">
+                    <div class="modal fade" id="excluir{{$member->id}}" tabindex="-1" role="dialog" aria-labelledby="excluir">
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -50,11 +60,11 @@
                                 </div>
                                 <div class="modal-body">
                                     <div align="center">
-                                        <b>{{ $church->igreja }}</b>
+                                        <b>{{ $member->nome }}</b>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    {!! Form::open(['route'=> ['church.destroy',$church->id], 'method'=>'DELETE']) !!}
+                                    {!! Form::open(['route'=> ['member.destroy',$member->id], 'method'=>'DELETE']) !!}
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                                     <button type="submit" class = "btn btn-danger"> <span class="glyphicon glyphicon-trash"></span> Excluir </button>
                                     {!! Form::close() !!}
@@ -68,6 +78,6 @@
 
         @endforeach
     </table>
-    {!! $churches->appends(\Request::except('page'))->render() !!}
+    {!! $members->appends(\Request::except('page'))->render() !!}
 
 @endsection

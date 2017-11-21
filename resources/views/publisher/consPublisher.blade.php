@@ -15,32 +15,32 @@
         </div>
     @endif
 
-    {{--@shield('church.cadastrar')--}}
-    <a href="{{ route('church.create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Cadastrar</a>
+    {{--@shield('publisher.cadastrar')--}}
+    <a href="{{ route('publisher.create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Cadastrar</a>
     {{--@endshield--}}
     <br><br>
     <table class="table table-striped">
         <tr>
             <th width="50px">@sortablelink('id','#')</th>
-            <th>@sortablelink('igreja','Igreja')</th>
+            <th>@sortablelink('editora','Editora')</th>
             <th width="100px">Ações</th>
         </tr>
-        @foreach ($churches as $church)
+        @foreach ($publishers as $publisher)
             <tr>
-                <td>{{ $church->id }}</td>
-                <td>{{ $church->igreja }}</td>
+                <td>{{ $publisher->id }}</td>
+                <td>{{ $publisher->editora }}</td>
                 <td>
-                    {{--@shield('church.editar')--}}
-                    <a class = "btn btn-sm btn-default" href="{{ route('church.edit',$church->id)}}">
+                    {{--@shield('publisher.editar')--}}
+                    <a class = "btn btn-sm btn-default" href="{{ route('publisher.edit',$publisher->id)}}">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </a>
                     {{--@endshield--}}
-                    <button type="button" title="EXCLUIR" class="btn btn-sm btn-default" data-toggle="modal" data-target="#excluir{{ $church->id }}">
+                    <button type="button" title="EXCLUIR" class="btn btn-sm btn-default" data-toggle="modal" data-target="#excluir{{ $publisher->id }}">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
 
                     <!-- Modal EXCLUIR-->
-                    <div class="modal fade" id="excluir{{$church->id}}" tabindex="-1" role="dialog" aria-labelledby="excluir">
+                    <div class="modal fade" id="excluir{{$publisher->id}}" tabindex="-1" role="dialog" aria-labelledby="excluir">
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -50,11 +50,11 @@
                                 </div>
                                 <div class="modal-body">
                                     <div align="center">
-                                        <b>{{ $church->igreja }}</b>
+                                        <b>{{ $publisher->editora }}</b>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    {!! Form::open(['route'=> ['church.destroy',$church->id], 'method'=>'DELETE']) !!}
+                                    {!! Form::open(['route'=> ['publisher.destroy',$publisher->id], 'method'=>'DELETE']) !!}
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                                     <button type="submit" class = "btn btn-danger"> <span class="glyphicon glyphicon-trash"></span> Excluir </button>
                                     {!! Form::close() !!}
@@ -68,6 +68,6 @@
 
         @endforeach
     </table>
-    {!! $churches->appends(\Request::except('page'))->render() !!}
+    {!! $publishers->appends(\Request::except('page'))->render() !!}
 
 @endsection

@@ -69,13 +69,13 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tabelas <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{ url('/livros') }}">Livros</a></li>
-                                <li><a href="{{ url('/autores') }}">Autores</a></li>
-                                <li><a href="{{ url('/editoras') }}">Editoras</a></li>
+                                <li><a href="{{ url('/book') }}">Livros</a></li>
+                                <li><a href="{{ url('/author') }}">Autores</a></li>
+                                <li><a href="{{ url('/publisher') }}">Editoras</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ url('/status') }}">Status</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="{{ url('/membros') }}">Membros</a></li>
+                                <li><a href="{{ url('/member') }}">Membros</a></li>
                                 <li><a href="{{ url('/church') }}">Igrejas</a></li>
                             </ul>
                         </li>

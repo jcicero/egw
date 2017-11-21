@@ -19,9 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('church', 'ChurchController');
-Route::resource('/autores','AuthorController');
-Route::resource('/membros','MemberController');
-Route::resource('/editoras','PublisherController');
+Route::resource('/church', 'ChurchController');
+Route::resource('/author','AuthorController');
+Route::resource('/member','MemberController');
+Route::resource('/publisher','PublisherController');
 Route::resource('/status','StatusController');
+Route::resource('/book','BookController');
 
